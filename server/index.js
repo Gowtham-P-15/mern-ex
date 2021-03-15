@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path')
 
 require('dotenv').config();
 
@@ -19,7 +20,9 @@ connection.once('open', () => {
 })
 
 
+const basePath = path.join(__dirname, './face/public')
 
+app.use(express.static(basePath))
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
